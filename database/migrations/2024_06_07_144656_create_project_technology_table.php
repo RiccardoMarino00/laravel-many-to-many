@@ -12,8 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('project_technology', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            // $table->id();
+            $table->unsignedBigInteger('technology_id');
+            $table->foreign('technology_id')->references('id')->on('technologies')->onDelete('cascade');
+
+            $table->unsignedBigInteger('project_id');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+
+            $table->primary(['technology_id', 'project_id']);
+            // $table->timestamps();
         });
     }
 
