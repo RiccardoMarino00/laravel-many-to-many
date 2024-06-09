@@ -19,15 +19,22 @@
                 {{-- @foreach ($project->technologies as $technology)
                     <p>{{$technology->name ? $technology->name : 'Nessuna tecnologia'}}</p>
                 @endforeach --}}
-                @dump($project->technology->name)
+                {{-- @dump($project->technology->name) --}}
                 <a href="{{$project->link}}">{{$project->link}}</a>
             </div>
-            <div class="col-6 right-align"> 
-                 <a href="{{route('admin.projects.edit', $project)}}">Edit</a>
-                 <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+            {{-- <div class=""> 
+                    <button class="btn"></button>
+                 
+                    <button class="btn btn-danger"></button>
+            </div> --}}
+            <div class="btn-group bottoni-card col-6 right-align" role="group" aria-label="Default button group">
+                <form action="{{route('admin.projects.edit', $project)}}">
+                    <button type="button" class="btn btn-outline-warning">Edit</button>
+                </form>
+                <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
                     @method('DELETE')
                     @csrf
-                    <button>Delete</button>
+                    <button type="button" class="btn btn-outline-danger">Delete</button>
                 </form>
             </div>
         </div>

@@ -1,3 +1,32 @@
 .right-align{
-    align-items: end;
+    text-align: end;
+}
+
+.altezza-100{
+    height: 100vh;
+}
+
+.nascondi-overscroll{
+    overflow-x: hidden;
+}
+
+a{
+    text-decoration: none;
+    color: currentColor;
+}
+
+.hover-project:hover{
+    color: rgb(76, 76, 145);
+}
+
+// .bi-box{
+//     color: rgb(76, 76, 145) ;
+// }
+
+a:hover{
+    color: rgb(76, 76, 145);
+}
+
+.bottoni-card{
+    justify-content: end;
 }
