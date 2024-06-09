@@ -36,6 +36,15 @@
                 <input  class="form-control" type="slug" name="slug" id="slug" value="{{$project->slug}}">
             </div>
 
+            <div>
+                <h2>Seleziona Tecnologia utilizzata</h2>
+                @foreach($technologies as $technology)
+                <div>
+                    <input name="technology[]" type="checkbox" value="{{$technology->id}}" id="technology-{{$technology->id}}">
+                    <label for="technology-{{$technology->id}}">{{$technology->name}}</label>
+                </div>
+                @endforeach
+            </div>
 
             {{-- <div class="container-input input-group mb-3">
                 <label for="slug" class="input-group-text" >slug momentaneo</label>

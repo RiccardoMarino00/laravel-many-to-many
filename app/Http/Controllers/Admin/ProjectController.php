@@ -10,6 +10,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Type;
 use Illuminate\Validation\Rule;
+use App\Models\Technology;
 
 
 
@@ -33,8 +34,9 @@ class ProjectController extends Controller
         //
 
         $types = Type::orderBy('name', 'asc')->get();
+        $technologies = Technology::orderBy('name', 'asc')->get();
 
-        return view('admin.projects.create', compact('types', 'project'));
+        return view('admin.projects.create', compact('types', 'project', 'technologies'));
     }
 
     /**
@@ -59,6 +61,10 @@ class ProjectController extends Controller
 
         $new_project = Project::create($form_data);
         return to_route('admin.projects.show', $new_project);
+
+        if($request->has('technologies')) {
+            $project->technologies()->attach($form_data['technologies']);
+        }
     }
 
     /**
@@ -78,7 +84,11 @@ class ProjectController extends Controller
     {
         //
         $types = Type::orderBy('name', 'asc')->get();
-        return view('admin.projects.edit', compact('project', 'types'));
+
+        $project->load(['technologies']);
+
+        $technologies = Technology::orderBy('name', 'asc')->get();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
 
     }
 
@@ -90,6 +100,14 @@ class ProjectController extends Controller
         //
         $form_data = $request->validated();
         $project->update($form_data);
+
+        if($request->has('technologies')) {
+            $project->technologies()->sync($request->technologies);
+
+        } else { // utente non ha selezionato nessuna tecnologia
+
+            $project->technologies()->detach();
+        }
         return to_route('admin.projects.show', $project);
     }
 

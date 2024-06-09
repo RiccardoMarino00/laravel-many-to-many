@@ -16,6 +16,10 @@
                 <p>{{$project->content}}</p>
                 {{-- @dump($project->type) --}}
                 <p>{{$project->type ? $project->type->name : 'Nessun tipo'}}</p>
+                {{-- @foreach ($project->technologies as $technology)
+                    <p>{{$technology->name ? $technology->name : 'Nessuna tecnologia'}}</p>
+                @endforeach --}}
+                @dump($project->technology->name)
                 <a href="{{$project->link}}">{{$project->link}}</a>
             </div>
             <div class="col-6 right-align"> 
