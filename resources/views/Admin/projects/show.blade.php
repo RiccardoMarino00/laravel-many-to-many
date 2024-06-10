@@ -8,7 +8,7 @@
     <p>{{$project->content}}</p>
     {{-- @dump($project->type) --}}
     <p>{{$project->type ? $project->type->name : 'Nessun tipo'}}</p>
-    @dump($project->technologies)
+    {{-- @dump($project->technologies) --}}
     {{-- <p>{{$project->technology}}</p> --}}
     @foreach($project->technologies as $technology)
     <p>{{$technology->name}}</p>

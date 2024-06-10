@@ -61,10 +61,13 @@ class ProjectController extends Controller
 
         $new_project = Project::create($form_data);
 
+        $new_project->save();
+
         //controllo se i dati sono stati inviati
         if($request->has('technologies')) {
-            $project->technologies()->attach($request->technologies);
+            $new_project->technologies()->attach($request->technologies);
         }
+
 
         return to_route('admin.projects.show', $new_project);
 
@@ -106,6 +109,7 @@ class ProjectController extends Controller
         //
         $form_data = $request->validated();
         $project->update($form_data);
+        $project->save();
         // var_dump($request->technologies);
 
         if($request->has('technologies')) {

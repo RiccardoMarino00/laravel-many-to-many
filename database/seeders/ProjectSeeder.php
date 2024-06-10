@@ -21,7 +21,7 @@ class ProjectSeeder extends Seeder
         $ids = $types->pluck('id')->all(); //array di id
 
         $technology_ids = Technology::all()->pluck('id')->all(); //array con id delle tecnologie
-        var_dump($technology_ids);
+        // var_dump($technology_ids);
         //
         for($i = 0; $i < 50; $i++){
             $project = new Project();
@@ -35,7 +35,7 @@ class ProjectSeeder extends Seeder
 
             $project->save();
 
-            $random_technology_ids = $faker->randomElement($technology_ids);
+            $random_technology_ids = $faker->randomElement($technology_ids, null);
 
             $project->technologies()->attach($random_technology_ids);
         }

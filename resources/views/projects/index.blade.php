@@ -16,9 +16,10 @@
                 <p>{{$project->content}}</p>
                 {{-- @dump($project->type) --}}
                 <p>{{$project->type ? $project->type->name : 'Nessun tipo'}}</p>
-                {{-- @foreach ($project->technologies as $technology) --}}
-                    <p>{{$project->technolohy ? $project->$technology->name : 'Nessuna tecnologia'}}</p>
-                {{-- @endforeach --}}
+                @foreach ($project->technologies as $technology)
+                    {{-- <p>{{$project->technology ? $project->$technology->name : 'Nessuna tecnologia'}}</p> --}}
+                    <p>{{$technology->name}}</p>
+                @endforeach
                 {{-- @dump($project->technologies) --}}
                 <a href="{{$project->link}}">{{$project->link}}</a>
             </div>
@@ -27,7 +28,7 @@
               
             </div> --}}
             <div class="col-6 right-align">
-                <a href="{{route('admin.projects.edit', $project)}}">edit</a>
+                <a class="link-warning" href="{{route('admin.projects.edit', $project)}}">edit</a>
                 <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
                     @csrf
                     @method('DELETE')
