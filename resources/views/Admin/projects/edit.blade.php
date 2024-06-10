@@ -29,6 +29,16 @@
         </select>
     </div>
 
+    <div class="container-input input-group mb-3">
+        @foreach ($technologies as $technology)
+            <div class="form-check">
+                <label for="technology-{{$technology->id}}">{{$technology->name}}</label>
+                <input @checked(in_array($technology->id, old('technologies', $project->technologies->pluck('id')->all() )) ) type="checkbox" name="technologies[]" class="form-check-input" value="{{$technology->id}}" id="technology-{{$technology->id}}" >
+            </div>
+        @endforeach
+  
+    </div>
+
     {{-- <div class="container-input input-group mb-3">
         <label class="input-group-text" for="slug" >slug momentaneo</label>
         <input  class="form-control" type="slug" name="slug" id="slug" value="{{$project->slug}}">

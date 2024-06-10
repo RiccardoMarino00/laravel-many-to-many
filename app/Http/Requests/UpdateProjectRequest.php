@@ -25,11 +25,11 @@ class UpdateProjectRequest extends FormRequest
         return [
             //
             'title' => 'required|max:200|string',
-            'slug' => ['required', 'max:255', Rule::unique('projects')->ignore($this->project)],
+            // 'slug' => ['required', 'max:255', Rule::unique('projects')->ignore($this->project)],
             'content' => 'nullable|string',
             'type_id' => 'nullable|exists:types,id',
             'link' => 'nullable',
-            'technologies' => 'exists: technologies,id',
+            'technology' => 'exists: technologies,id',
 
         ];
     }
