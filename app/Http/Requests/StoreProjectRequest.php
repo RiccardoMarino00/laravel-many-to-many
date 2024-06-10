@@ -27,7 +27,8 @@ class StoreProjectRequest extends FormRequest
             'content' => 'nullable|string',
             'type_id' => 'nullable|exists:types,id',
             'link' => 'nullable',
-            'slug' => ['required', 'max:255', Rule::unique('projects')->ignore($this->project)],
+            'slug' => ['required', 'max:255', Rule::unique('projects')->ignore($this->project)], // controllare se va tenuto o tolto
+            'technologies' => 'exists:technologies,id'
         ];
     }
 }

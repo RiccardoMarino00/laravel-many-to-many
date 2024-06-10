@@ -60,11 +60,15 @@ class ProjectController extends Controller
         $form_data['slug'] = $slug;
 
         $new_project = Project::create($form_data);
+
+        //controllo se i dati sono stati inviati
+        if($request->has('technologies')) {
+            $project->technologies()->attach($request->technologies);
+        }
+
         return to_route('admin.projects.show', $new_project);
 
-        if($request->has('technologies')) {
-            $project->technologies()->attach($form_data['technologies']);
-        }
+      
     }
 
     /**
@@ -83,9 +87,11 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         //
+        $project->load(['technologies']);
+
+
         $types = Type::orderBy('name', 'asc')->get();
 
-        $project->load(['technologies']);
 
         $technologies = Technology::orderBy('name', 'asc')->get();
         return view('admin.projects.edit', compact('project', 'types', 'technologies'));
@@ -100,6 +106,7 @@ class ProjectController extends Controller
         //
         $form_data = $request->validated();
         $project->update($form_data);
+        // var_dump($request->technologies);
 
         if($request->has('technologies')) {
             $project->technologies()->sync($request->technologies);

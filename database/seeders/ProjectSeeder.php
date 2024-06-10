@@ -35,7 +35,7 @@ class ProjectSeeder extends Seeder
 
             $project->save();
 
-            $random_technology_ids = $faker->randomElements($technology_ids, 0);
+            $random_technology_ids = $faker->randomElement($technology_ids);
 
             $project->technologies()->attach($random_technology_ids);
         }
