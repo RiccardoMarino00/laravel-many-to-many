@@ -30,12 +30,12 @@
                 </select>
             </div>
 
-            <div class="container-input input-group mb-3">
+            {{-- <div class="container-input input-group mb-3">
                 <label class="input-group-text" for="slug" >slug momentaneo</label>
-                {{-- @dd($projects) --}}
+                
                 <input  class="form-control" type="slug" name="slug" id="slug" value="{{$project->slug}}">
-            </div>
-
+            </div> --}}
+{{-- @dd($projects) --}}
             <div>
                 <h2>Seleziona Tecnologia utilizzata</h2>
                 @foreach($technologies as $technology)

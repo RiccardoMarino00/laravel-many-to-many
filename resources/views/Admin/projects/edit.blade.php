@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{route('admin.projects.update', $project)}}" method="POST">
+<form class="m-5" action="{{route('admin.projects.update', $project)}}" method="POST">
     @csrf
     @method('PUT')
     <div class="contenitore-input input-group mb-3">
@@ -29,10 +29,10 @@
         </select>
     </div>
 
-    <div class="container-input input-group mb-3">
+    {{-- <div class="container-input input-group mb-3">
         <label class="input-group-text" for="slug" >slug momentaneo</label>
         <input  class="form-control" type="slug" name="slug" id="slug" value="{{$project->slug}}">
-    </div>
+    </div> --}}
     <a  href="{{route('admin.projects.index')}}">Back</a>
 
 

@@ -16,9 +16,10 @@
                 <p> <strong> Content: </strong> {{$project->content}}</p>
                 {{-- @dump($project->type) --}}
                 <p> <strong>Type: </strong> {{$project->type ? $project->type->name : ' No Type'}}</p>
+                <p><strong> Technology: </strong></p>
                 @foreach ($project->technologies as $technology)
                     {{-- <p>{{$project->technology ? $project->$technology->name : 'Nessuna tecnologia'}}</p> --}}
-                    <p> <strong> Technology: </strong> {{$technology->name}}</p>
+                    <p>  {{$technology->name}}</p>
                 @endforeach
                 {{-- @dump($project->technologies) --}}
                 <a href="{{$project->link}}"><strong> Link: </strong> {{$project->link}}</a> <br>
