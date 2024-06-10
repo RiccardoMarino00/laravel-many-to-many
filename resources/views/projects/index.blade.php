@@ -22,24 +22,17 @@
                 {{-- @dump($project->technologies) --}}
                 <a href="{{$project->link}}">{{$project->link}}</a>
             </div>
-            {{-- <div class=""> 
-                    <button class="btn"></button>
-                 
-                    <button class="btn btn-danger"></button>
+          
+            {{-- <div  role="group" aria-label="Default button group">
+              
             </div> --}}
-            {{-- <div class="btn-group bottoni-card col-6 right-align" role="group" aria-label="Default button group">
-                <form action="{{route('admin.projects.edit', $project)}}">
-                    <button type="button" class="btn btn-outline-warning">Edit</button>
-                </form>
-                <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button type="button" class="btn btn-outline-danger">Delete</button>
-                </form>
-            </div> --}}
-            <div>
+            <div class="col-6 right-align">
                 <a href="{{route('admin.projects.edit', $project)}}">edit</a>
-                <a href="{{ route('admin.projects.destroy', $project) }}">delete</a>
+                <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger">Delete</button>
+                </form>
             </div>
         </div>
     @endforeach
