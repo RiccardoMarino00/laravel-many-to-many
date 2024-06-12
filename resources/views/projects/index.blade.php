@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section>
+<section class="section-index">
 
     {{-- <div class="container">
         <a href="{{route('admin.projects.create')}}">Create new project</a>
