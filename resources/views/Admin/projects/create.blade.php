@@ -40,8 +40,10 @@
                 <h2>Seleziona Tecnologia utilizzata</h2>
                 @foreach($technologies as $technology)
                 <div>
-                    <input name="technology[]" type="checkbox" value="{{$technology->id}}" id="technology-{{$technology->id}}">
-                    <label for="technology-{{$technology->id}}">{{$technology->name}}</label>
+                    {{-- <input name="technology[]" type="checkbox" value="{{$technology->id}}" id="technology-{{$technology->id}}">
+                    <label for="technology-{{$technology->id}}">{{$technology->name}}</label> --}}
+                    <input @checked(in_array($technology->id, old('technologies', [])) ) name="technologies[]" type="checkbox" value="{{ $technology->id }}" id="technology-{{ $technology->id }}" >
+                    <label for="technology-{{ $technology->id }}">{{ $technology->name }}</label>
                 </div>
                 @endforeach
             </div>
